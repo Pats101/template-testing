@@ -1,3 +1,9 @@
+/**
+ * A reference to the HTML element with the ID 'quote-container'.
+ * This container is used to display the inspiring quotes.
+ * 
+ * @type {HTMLElement}
+ */
 const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
