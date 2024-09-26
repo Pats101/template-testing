@@ -21,6 +21,12 @@ jobs:
           - name: Checkout repository
             uses: actions/checkout@v2
 
+          - name: Run Gitleaks to detect sensitive data
+            uses: zricethezav/gitleaks-action@v1.2.0
+            with:
+              config_path: .gitleaks.toml
+              args: "--path . --verbose"
+
           - name: Set up Node.js
             uses: actions/setup-node@v2
             with:
