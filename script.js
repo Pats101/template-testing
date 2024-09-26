@@ -1,3 +1,9 @@
+/**
+ * A reference to the HTML element with the ID 'quote-container'.
+ * This container is used to display the inspiring quotes.
+ * 
+ * @type {HTMLElement}
+ */
 const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
@@ -11,6 +17,7 @@ const favouritesContainer = document.getElementById('favourites-container');
 let apiQuotes = []; 
 let quote = {};
 let favouriteQuotes = [];
+let favouriteQuotesJsonString = '';
 
 // Show Loading
 function showLoadingSymbol() {
@@ -25,34 +32,34 @@ function removeLoadingSymbol() {
 }
 
 // Add Quote to Favourites 
-function addQuoteToFavourites() {
-  saveToLocalFavourites(quote);
-}
+// function addQuoteToFavourites() {
+//   saveToLocalFavourites(quote);
+// }
 
 // Save Qoute to Local Storage
-function saveToLocalFavourites(favourite) {
-  // loading favourite quotes from local storage
-  let favouriteQuotesJsonString = localStorage.getItem('favouriteQuotes');
-  if(favouriteQuotesJsonString != null) {
-    favouriteQuotes = JSON.parse(favouriteQuotesJsonString);
-  }
-  // check if quote was already chosen as a favourite 
-  const validateQuote = favouriteQuotes.find(q => q.text === favourite.text);
-  // if it wasn't add to the list of favourites array and change the color of the favourite icon to red
-  if(!validateQuote) {
-    // Add the new favourite quote to the array
-    favouriteQuotes.push(favourite);
-    favouriteIcon.style.color ='red';
-  }
-  // If it's already a favourite then remove the quote from the favourite list and change the icon color to grey 
-  else {
-    removeQuoteFromFavourites(favourite);
-    favouriteIcon.style.color = 'grey';
-  }
-  // Save the new array back to local storage
-  favouriteQuotesJsonString = JSON.stringify(favouriteQuotes);
-  localStorage.setItem('favouriteQuotes', favouriteQuotesJsonString);
-}
+// function saveToLocalFavourites(favourite) {
+//   // loading favourite quotes from local storage
+//   favouriteQuotesJsonString = localStorage.getItem('favouriteQuotes');
+//   if(favouriteQuotesJsonString != null) {
+//     favouriteQuotes = JSON.parse(favouriteQuotesJsonString);
+//   }
+//   // check if quote was already chosen as a favourite 
+//   const validateQuote = favouriteQuotes.find(q => q.text === favourite.text);
+//   // if it wasn't add to the list of favourites array and change the color of the favourite icon to red
+//   if(!validateQuote) {
+//     // Add the new favourite quote to the array
+//     favouriteQuotes.push(favourite);
+//     favouriteIcon.style.color ='red';
+//   }
+//   // If it's already a favourite then remove the quote from the favourite list and change the icon color to grey 
+//   else {
+//     removeQuoteFromFavourites(favourite);
+//     favouriteIcon.style.color = 'grey';
+//   }
+//   // Save the new array back to local storage
+//   favouriteQuotesJsonString = JSON.stringify(favouriteQuotes);
+//   localStorage.setItem('favouriteQuotes', favouriteQuotesJsonString);
+// }
 
 // Removing Quote from Favourite if it was already there and the heart was clicked again from red to grey
 function removeQuoteFromFavourites(favourite) {
