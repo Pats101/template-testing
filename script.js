@@ -32,6 +32,7 @@ function removeLoadingSymbol() {
 }
 
 // Add Quote to Favourites 
+// eslint-disable-next-line no-unused-vars
 function addQuoteToFavourites() {
   saveToLocalFavourites(quote);
 }
